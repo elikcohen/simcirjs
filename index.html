@@ -69,7 +69,7 @@
   firebase.initializeApp(firebaseConfig);
   
   function mySaveFunction() {
-    metad = window.document.getElementById('user-metadata').innerText;
+    metad = window.parent.document.getElementById('user-metadata').innerText;
     metadParsed = JSON.parse(metad);
     username = metadParsed.username;
     console.log("User " + username +" hit Save !");
