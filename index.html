@@ -48,6 +48,11 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+  
+  var saveBtn = document.getElementById('simcir-fb-post-circuit');
+  saveBtn.addEventListener('change', function(e) {
+    console.log("Hit Save !");
+  });
 </script>
  
 <div class="simcir">
