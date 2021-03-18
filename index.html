@@ -36,22 +36,6 @@
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
- 
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyCt45QFC8PO-60QN2MMeX__20P4Z-Qja9c",
-    authDomain: "ld101-d326f.firebaseapp.com",
-    projectId: "ld101-d326f",
-    storageBucket: "ld101-d326f.appspot.com",
-    messagingSenderId: "845780335610",
-    appId: "1:845780335610:web:357c093d872b864fe44243"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  
-</script>
-
 <div class="simcir">
 {
   "width":800,
@@ -72,9 +56,21 @@
 </div>
 <button onclick="myFunction()">Save</button>
 <script>
-function myFunction() {
-  console.log("Hit Save !");
-};
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCt45QFC8PO-60QN2MMeX__20P4Z-Qja9c",
+    authDomain: "ld101-d326f.firebaseapp.com",
+    projectId: "ld101-d326f",
+    storageBucket: "ld101-d326f.appspot.com",
+    messagingSenderId: "845780335610",
+    appId: "1:845780335610:web:357c093d872b864fe44243"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  
+  function myFunction() {
+    console.log("Hit Save !");
+  };
 </script>
 
 </body>
