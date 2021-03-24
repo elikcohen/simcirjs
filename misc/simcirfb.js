@@ -21,7 +21,7 @@ queryString     = queryString.substr(1);
 if (queryString.length)
 {
    keyValPairs = queryString.split('&');
-   for (pairNum in keyValPairs)
+   for (var pairNum in keyValPairs)
    {
       var key = keyValPairs[pairNum].split('=')[0];
       if (!key.length) continue;
@@ -40,11 +40,11 @@ function mySubmitFunction() {
     // When we store the circuit in the firebase storage we want to create a 
     // directory structure of the following form:
     //     courseID/userID/Circuit
-    userID = params.userID.toString();
-    courseID = params.courseID.toString();
-    sectionID = params.sectionID.toString();
-    subsectionID = params.subsectionID.toString();
-    unitID = params.unitID.toString();
+    var userID = params.userID.toString();
+    var courseID = params.courseID.toString();
+    var sectionID = params.sectionID.toString();
+    var subsectionID = params.subsectionID.toString();
+    var unitID = params.unitID.toString();
 
     if (!userID) {
         userID = "nouid";
