@@ -65,7 +65,7 @@ function mySubmitFunction() {
     // Gather the circuit data
     var $s = simcir;
     var $simcir = $('#circuit');
-    var lastData = '';
+    // var lastData = '';
     var getCircuitData = $s.controller($simcir.find('.simcir-workspace') ).text();
     var data = new Blob([getCircuitData], {type: 'text/plain'});
 
@@ -76,7 +76,7 @@ function mySubmitFunction() {
     }
 
     textFile = window.URL.createObjectURL(data);
-    var pathFile = storageRef.child(courseID+'/'+userID+'/'+sectionID+'/'+subsectionID+'/'+'unitID.txt');
+    var pathFile = storageRef.child(courseID+'/'+userID+'/'+sectionID+'/'+subsectionID+'/'+unitID+'/.txt');
     pathFile.put(data).then((snapshot) => {
         console.log('Uploaded a blob or file!');
       });
