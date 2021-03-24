@@ -41,7 +41,7 @@ function mySubmitFunction() {
     // username = window.location.search.substring(window.location.search.indexOf('user=') + 5);
     // userID = window.location.search.substring(window.location.search.indexOf('userID=') + 7);
     // courseID = window.location.search.substring(window.location.search.indexOf('courseID=') + 9);
-    userID = params.user_id.toString();
+    userID = params.userID.toString();
     courseID = params.courseID.toString();
 
     if (!userID) {
