@@ -19,8 +19,15 @@ function mySubmitFunction() {
     var storageRef = storage.ref();
 
     username = window.location.search.substring(window.location.search.indexOf('user=') + 5);
-    if (!username) {
-        username = "nouser"
+    userID = window.location.search.substring(window.location.search.indexOf('userID=') + 7);
+    courseID = window.location.search.substring(window.location.search.indexOf('courseID=') + 9);
+    
+    if (!userID) {
+        userID = "nouid";
+    }
+
+    if (!courseID) {
+        courseID = "nocid";
     }
 
     var $s = simcir;
@@ -40,7 +47,7 @@ function mySubmitFunction() {
     }
 
     textFile = window.URL.createObjectURL(data);
-    var pathFile = storageRef.child(username+'/CircuitData.txt');
+    var pathFile = storageRef.child(courseID+'/'+userID+'/'+'/CircuitData.txt');
     pathFile.put(data).then((snapshot) => {
         console.log('Uploaded a blob or file!');
       });
