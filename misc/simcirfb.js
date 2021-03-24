@@ -37,29 +37,36 @@ function mySubmitFunction() {
     // Create a storage reference from our storage service
     var storageRef = storage.ref();
 
-    // keyVal = $.parseQuery(window.location.toString);
-    // username = window.location.search.substring(window.location.search.indexOf('user=') + 5);
-    // userID = window.location.search.substring(window.location.search.indexOf('userID=') + 7);
-    // courseID = window.location.search.substring(window.location.search.indexOf('courseID=') + 9);
+    // When we store the circuit in the firebase storage we want to create a 
+    // directory structure of the following form:
+    //     courseID/userID/Circuit
     userID = params.userID.toString();
     courseID = params.courseID.toString();
+    sectionID = params.sectionID.toString();
+    subsectionID = params.subsectionID.toString();
+    unitID = params.unitID.toString();
 
     if (!userID) {
         userID = "nouid";
     }
-
     if (!courseID) {
         courseID = "nocid";
     }
+    if (!sectionID) {
+        sectionID = "nosecid";
+    }
+    if (!subsectionID) {
+        subsectionID = "nosubsecid";
+    }
+    if (!unitID) {
+        unitID = "nounitid";
+    }
 
+    // Gather the circuit data
     var $s = simcir;
-
-    // var $simcir = document.getElementById('circuit');
     var $simcir = $('#circuit');
     var lastData = '';
-  
     var getCircuitData = $s.controller($simcir.find('.simcir-workspace') ).text();
-  
     var data = new Blob([getCircuitData], {type: 'text/plain'});
 
     // If we are replacing a previously generated file we need to
@@ -69,7 +76,7 @@ function mySubmitFunction() {
     }
 
     textFile = window.URL.createObjectURL(data);
-    var pathFile = storageRef.child(courseID+'/'+userID+'/'+'/CircuitData.txt');
+    var pathFile = storageRef.child(courseID+'/'+userID+'/'+sectionID+'/'+subsectionID+'/'+'unitID.txt');
     pathFile.put(data).then((snapshot) => {
         console.log('Uploaded a blob or file!');
       });
