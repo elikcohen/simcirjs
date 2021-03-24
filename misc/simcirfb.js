@@ -12,16 +12,38 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var username = '';
+
+var queryString = window.location.search || '';
+var keyValPairs = [];
+var params      = {};
+queryString     = queryString.substr(1);
+
+if (queryString.length)
+{
+   keyValPairs = queryString.split('&');
+   for (pairNum in keyValPairs)
+   {
+      var key = keyValPairs[pairNum].split('=')[0];
+      if (!key.length) continue;
+      if (typeof params[key] === 'undefined')
+         params[key] = [];
+      params[key].push(keyValPairs[pairNum].split('=')[1]);
+   }
+}
+
 function mySubmitFunction() {
     // Get a reference to the storage service, which is used to create references in your storage bucket
     var storage = firebase.storage();
     // Create a storage reference from our storage service
     var storageRef = storage.ref();
 
-    username = window.location.search.substring(window.location.search.indexOf('user=') + 5);
-    userID = window.location.search.substring(window.location.search.indexOf('userID=') + 7);
-    courseID = window.location.search.substring(window.location.search.indexOf('courseID=') + 9);
-    
+    // keyVal = $.parseQuery(window.location.toString);
+    // username = window.location.search.substring(window.location.search.indexOf('user=') + 5);
+    // userID = window.location.search.substring(window.location.search.indexOf('userID=') + 7);
+    // courseID = window.location.search.substring(window.location.search.indexOf('courseID=') + 9);
+    userID = params.user_id.toString();
+    courseID = params.courseID.toString();
+
     if (!userID) {
         userID = "nouid";
     }
