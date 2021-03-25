@@ -24,6 +24,7 @@
       font-family: arial, sans-serif;
     }
 
+
     .code {
       margin: 16px 0px 16px 0px;
       padding: 4px;
@@ -61,28 +62,16 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Open</a>
-            <a class="dropdown-item" href="#">Save</a>
-            <a class="dropdown-item" href="#">Export</a>
-            <a class="dropdown-item" href="#">Import</a>
+            <a class="dropdown-item" href="#" onclick="mySubmitFunction()">Save</a>
+            <a id="download" class="dropdown-item" href="#" onclick="makeTextFile()">Export</a>
+            <a class="dropdown-item" href="#" onclick="document.getElementById('file').click();" >Import</a>
             <a class="dropdown-item" href="#">Print</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Close</a>
           </div>
         </li>
-        <!-- <li class="nav-item active">
-          <a class="nav-link" href="#">Home </span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li> -->
       </ul>
       <button class="btn btn-primary btn-sm" type="submit">Submit</button>
-      <!-- <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      </form>  -->
     </div>
   </nav>
   <div class="simcir" id="circuit">
@@ -103,10 +92,10 @@
     ]
     }
   </div>
-  <a class="btn" href="javascript:void(0)" id="Submit"><button onclick="mySubmitFunction()">Submit</button></a>
+  <!-- <a class="btn" href="javascript:void(0)" id="Submit"><button onclick="mySubmitFunction()">Submit</button></a> -->
   <!-- <button onclick="mySubmitFunction()">Submit</button> -->
-  <a id="download" download='info.txt'><button onclick="makeTextFile()">Download Circuit</button></a>
-  <input type="button" id="uploadFile" value="Upload Circuit" onclick="document.getElementById('file').click();" />
+  <!-- <a id="download" download='info.txt'><button onclick="makeTextFile()">Download Circuit</button></a> -->
+  <!-- <input type="button" id="uploadFile" value="Upload Circuit" onclick="document.getElementById('file').click();" /> -->
   <input type="file" style="display:none;" id="file" name="file" />
   <!-- <input id="input" type="file"/> -->
 </body>
