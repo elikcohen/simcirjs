@@ -36,7 +36,49 @@ function mySubmitFunction() {
     var storage = firebase.storage();
     // Create a storage reference from our storage service
     var storageRef = storage.ref();
+    // Get the circuit data
+    var data = getUserData();
+    // Get the file path to store the file
+    var pathStr = getFilePath();
+    var pathFile = storageRef.child(pathStr);
+    // Sore the file in the ref path
+    pathFile.put(data).then((snapshot) => {
+        console.log('Uploaded a blob or file!');
+      });      
+    console.log(pathStr);
+};
 
+var textFile = null;
+function makeTextFile() {
+    // var text = "The rain in spain";
+    // var data = new Blob([text], {type: 'text/plain'});
+    var data = getUserData();
+
+    // If we are replacing a previously generated file we need to
+    // manually revoke the object URL to avoid memory leaks.
+    if (textFile !== null) {
+        window.URL.revokeObjectURL(textFile);
+    }
+
+    textFile = window.URL.createObjectURL(data);
+    var dwnldlink = document.getElementById('download');
+    dwnldlink.href = textFile;
+    dwnldlink.download = 'circuit.json';
+
+    return textFile;
+};
+
+
+function getUserData() {
+    // Gather the circuit data
+    var $s = simcir;
+    var $simcir = $('#circuit');
+    var getCircuitData = $s.controller($simcir.find('.simcir-workspace') ).text();
+    var data = new Blob([getCircuitData], {type: 'text/plain'});
+    return data;
+}
+
+function getFilePath() {
     // When we store the circuit in the firebase storage we want to create a 
     // directory structure of the following form:
     //     courseID/userID/Circuit
@@ -62,44 +104,9 @@ function mySubmitFunction() {
         unitID = "nounitid";
     }
 
-    // Gather the circuit data
-    var $s = simcir;
-    var $simcir = $('#circuit');
-    // var lastData = '';
-    var getCircuitData = $s.controller($simcir.find('.simcir-workspace') ).text();
-    var data = new Blob([getCircuitData], {type: 'text/plain'});
+    var pathStr = courseID+'/'+userID+'/'+sectionID+'/'+subsectionID+'/'+unitID+'.json';    
+    return pathStr;
+}
 
-    // If we are replacing a previously generated file we need to
-    // manually revoke the object URL to avoid memory leaks.
-    if (textFile !== null) {
-      window.URL.revokeObjectURL(textFile);
-    }
 
-    textFile = window.URL.createObjectURL(data);
-    var pathFile = storageRef.child(courseID+'/'+userID+'/'+sectionID+'/'+subsectionID+'/'+unitID+'/.txt');
-    pathFile.put(data).then((snapshot) => {
-        console.log('Uploaded a blob or file!');
-      });
-      
-
-    console.log("User " + username + " hit Save !");
-};
-
-var textFile = null;
-function makeTextFile() {
-    var text = "The rain in spain";
-    var data = new Blob([text], {type: 'text/plain'});
-
-    // If we are replacing a previously generated file we need to
-    // manually revoke the object URL to avoid memory leaks.
-    if (textFile !== null) {
-        window.URL.revokeObjectURL(textFile);
-    }
-
-    textFile = window.URL.createObjectURL(data);
-    var dwnldlink = document.getElementById('download');
-    dwnldlink.href = textFile;
-
-    return textFile;
-};
     
