@@ -43,7 +43,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <nav class="navbar dropright navbar-expand-sm navbar-dark bg-dark">
   <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
     <a class="navbar-brand" >    
       <img src="img/alwaysat-logo-invert.svg" height="32" class="d-inline-block align-top" alt="">
@@ -61,11 +61,13 @@
             File
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Open</a>
-            <a class="dropdown-item" href="#" onclick="mySubmitFunction()">Save</a>
-            <a id="download" class="dropdown-item" href="#" onclick="makeTextFile()">Export</a>
-            <a class="dropdown-item" href="#" onclick="document.getElementById('file').click();" >Import</a>
-            <a class="dropdown-item" href="#">Print</a>
+            <a class="dropdown-item" href="#">Open From Cloud</a>
+            <a class="dropdown-item" href="#" onclick="mySubmitFunction()">Save To Cloud</a>
+            <div class="dropdown-divider"></div>
+            <a id="download" class="dropdown-item" href="#" onclick="makeTextFile()">Export To Device</a>
+            <a class="dropdown-item" href="#" onclick="document.getElementById('file').click();" >Import From Device</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" onclick="window.print()">Print</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Close</a>
           </div>
